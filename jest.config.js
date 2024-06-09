@@ -36,6 +36,4 @@ module.exports = {
   },
   coverageDirectory: '<rootDir>/coverage~~',
   collectCoverageFrom: ['app/**/*.{ts,tsx,js}'],
-  testEnvironment: 'jsdom',
-  setupFiles: ['./__mocks__/setup-jest-globals.js'],
 }
