@@ -1,3 +1,7 @@
-# gitfiend-shell
+# GitFiend Shell (WIP)
 
-Responsible for wrapping GitFiend core and client in an app/window and app packaging.
+This repo enables you to build and package GitFiend.
+The source code for the app shell is available in this repo. 
+The client code will be included but minified for now.
+
+Requires Rust and Nodejs
