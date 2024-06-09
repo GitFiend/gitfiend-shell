@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES2022",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "jsx": "react",
+    "jsxFactory": "createElement",
+    "jsxFragmentFactory": "Fragment",
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "strict": true,
+    "importHelpers": true
+  },
+  "include": [
+    "globals.d.ts",
+    "src",
+    "src-ui",
+    "scripts",
+    "test"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "target~~",
+    "resources",
+    ".test-temp",
+    "test-home",
+    "scripts/notarize.js"
+  ],
+  "compileOnSave": false
+}
