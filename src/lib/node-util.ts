@@ -1,4 +1,3 @@
-// Put nodejs only util functions here.
 import path from 'path'
 import fs from 'fs'
 

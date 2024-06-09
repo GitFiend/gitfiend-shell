@@ -50,8 +50,6 @@ function configs(env: WebpackEnv, argv: WebpackArgv): Configuration[] | Configur
     __PLATFORM__: JSON.stringify(platform()),
     __SEP__: JSON.stringify(sep),
 
-    __RESOURCES_DIR__: JSON.stringify(join(__dirname, 'resources')),
-
     // We do this here so that Chrome dev tools shows the correct file name.
     // Putting it in an util file would obscure where it's called.
     TIME: `((id)=>{if (${devMode}) console.time(id);})`,

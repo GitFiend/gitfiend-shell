@@ -62,6 +62,7 @@ async function createWindow(port: number) {
     darkTheme: nativeTheme.shouldUseDarkColors,
   })
 
+  // __dirname is resources/dist
   let htmlPath = path.join(__dirname, '..', 'index.html')
   console.log(__dirname, htmlPath)
 

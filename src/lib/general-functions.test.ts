@@ -1,7 +1,7 @@
 import path from 'path'
 import {existsSync} from 'fs'
-import {removePathSync} from '../../main-process/util'
-import {ensureDirSync} from '../../lib/node-util'
+import {removePathSync} from '../main-process/util'
+import {ensureDirSync} from './node-util'
 
 describe('ensureDirSync', () => {
   const p = path.join(process.cwd(), 'hey', 'there')

@@ -1,7 +1,7 @@
 /// <reference path="../globals.d.ts" />
 
 import path from 'path'
-import {_mapO} from './renderer-process/util/general-functions'
+import {_mapO} from './lib/general-functions'
 import {existsSync} from 'fs'
 
 // Relative to the html file. This isn't the same in __INT_TEST__

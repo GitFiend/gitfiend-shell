@@ -24,7 +24,9 @@ export function commonConfig(
 
   return {
     output: {
-      path: join(rootDir, 'resources', 'dist'),
+      path: devMode
+        ? join(rootDir, 'resources-dev', 'dist')
+        : join(rootDir, 'resources', 'dist'),
       filename: '[name].js',
     },
     stats: {
