@@ -15,12 +15,10 @@ function configs(env: WebpackEnv, argv: WebpackArgv): Configuration[] | Configur
   const devMode = argv.mode === 'development'
   const testIntMode = !!(env && env.testInt === 'true')
 
-  const outputDir = join(__dirname, 'resources', 'dist')
-  removePathSync(outputDir)
-  ensureDirSync(outputDir)
-  console.log(`Cleared ${outputDir}.`)
-
-  const browserOnly = env?.server === 'true'
+  // const outputDir = join(__dirname, 'resources', 'dist')
+  // removePathSync(outputDir)
+  // ensureDirSync(outputDir)
+  // console.log(`Cleared ${outputDir}.`)
 
   const buildEnvironment: BuildEnvironment = {
     __DEV__: devMode,
@@ -33,19 +31,11 @@ function configs(env: WebpackEnv, argv: WebpackArgv): Configuration[] | Configur
 
     __JEST__: false,
     __INT_TEST__: testIntMode,
-    __MENU2__: false, // || platform() !== 'darwin'
-    __FIEND_DEV__: false,
 
     // Whether to use server to load files instead of file protocol.
-    __USE_SERVER__: browserOnly,
-    __BROWSER_ONLY__: false, // TODO: "tauri" just for now
-    __ELECTRON__: true,
 
     // These are overridden depending on what js file they are.
-    __RENDERER__: false,
     __MAIN__: false,
-    __MAC_NATIVE__: false,
-    __TAURI__: false,
 
     __PLATFORM__: JSON.stringify(platform()),
     __SEP__: JSON.stringify(sep),
@@ -57,8 +47,6 @@ function configs(env: WebpackEnv, argv: WebpackArgv): Configuration[] | Configur
     LOG: `((...args)=>{if (${devMode}) console.log(...args);})`,
     PERF: `((name) => {if (${devMode} && typeof window !== 'undefined') {performance.mark(name + 'start')}})`,
     PERF_END: `((name) => {if (${devMode} && typeof window !== 'undefined') {performance.mark(name + 'end');performance.measure(name, name + 'start', name + 'end');}})`,
-    some: `(value) => value != null`, // Terser doesn't seem to inline this, even though it should.
-    // some: `null !=`,
   }
 
   return mainConfig(env, argv, devMode, buildEnvironment, __dirname)

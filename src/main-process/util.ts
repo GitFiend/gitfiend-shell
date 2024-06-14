@@ -1,8 +1,5 @@
 import path from 'path'
 import fs from 'fs'
-import {NOT_IN_RENDERER} from '../lib/check-process'
-
-NOT_IN_RENDERER(__filename)
 
 export function getCwd(): string {
   if (__MAC__) {

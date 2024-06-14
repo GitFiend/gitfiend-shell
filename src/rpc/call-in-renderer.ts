@@ -1,5 +1,4 @@
 import {RendererFunctions} from './renderer-functions'
-import {ipcMain} from 'electron'
 import {getMainWindow} from '../main-process/main-window'
 import {getRpcCaller} from './rpc-call'
 

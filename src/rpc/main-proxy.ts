@@ -34,9 +34,7 @@ function initCallInMain<N extends keyof MainFunctions>() {
     /// #endif
   }
 
-  /// #if __ELECTRON__
   const {ipcRenderer} = require('electron')
 
   return getRpcCaller('call-in-main', ipcRenderer.send, ipcRenderer)
-  /// #endif
 }

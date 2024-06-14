@@ -4,14 +4,13 @@ import {join} from 'path'
 
 export interface WebpackArgv {
   mode: 'development' | 'production'
+  resources?: 'dev'
   env: WebpackEnv
 }
 
 export interface WebpackEnv {
   testInt?: 'true'
-  macNative?: 'true'
-  server?: 'true'
-  tauri?: 'true'
+  devResources?: 'true'
 }
 
 export function commonConfig(
@@ -21,10 +20,11 @@ export function commonConfig(
   buildEnvironment: BuildEnvironment,
 ): Configuration {
   const devMode = argv.mode === 'development'
+  const devResources = argv.env.devResources === 'true'
 
   return {
     output: {
-      path: devMode
+      path: devResources
         ? join(rootDir, 'resources-dev', 'dist')
         : join(rootDir, 'resources', 'dist'),
       filename: '[name].js',
@@ -56,7 +56,6 @@ export function commonConfig(
                 tsconfigRaw: require('../tsconfig.json'),
               },
             },
-            {loader: 'ifdef-loader', options: buildEnvironment},
           ],
         },
       ],
@@ -74,13 +73,7 @@ export interface BuildEnvironment extends Record<string, string | boolean> {
   __LIN__: boolean
   __JEST__: boolean
   __INT_TEST__: boolean
-  __MENU2__: boolean
   __APP_VERSION__: string
   __APP_NAME__: string
-  __RENDERER__: boolean
   __MAIN__: boolean
-  __FIEND_DEV__: boolean
-  __MAC_NATIVE__: boolean
-  __ELECTRON__: boolean
-  __TAURI__: boolean
 }

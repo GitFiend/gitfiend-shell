@@ -1,4 +1,3 @@
-/// #if __ELECTRON__
 import {getMainWindow} from '../main-process/main-window'
 import {app, dialog, Menu, Rectangle, shell} from 'electron'
 import {MenuItemOptions, RenderMenuItem} from './menus/menu-types'
@@ -116,5 +115,3 @@ export function convertRendererMenu(menus: RenderMenuItem[]): MenuItemOptions[] 
 export function setApplicationMenu(menu: RenderMenuItem[]) {
   Menu.setApplicationMenu(Menu.buildFromTemplate(convertRendererMenu(menu)))
 }
-
-/// #endif

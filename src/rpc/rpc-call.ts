@@ -4,7 +4,7 @@ import {RpcReceiver, RpcRequest, RpcResponse, RpcSender} from './rpc-shared'
 export function getRpcCaller(
   channel: string,
   sender: RpcSender,
-  receiver: RpcReceiver
+  receiver: RpcReceiver,
 ): (name: string, ...args: any[]) => Promise<any> {
   const rcp = new Rpc(channel, sender, receiver)
 
@@ -18,7 +18,7 @@ class Rpc {
   constructor(
     private channel: string,
     private send: RpcSender,
-    private onObject: RpcReceiver
+    private onObject: RpcReceiver,
   ) {
     onObject.on(channel, (event, response: RpcResponse<unknown>) => {
       const {callNum, result} = response
@@ -29,10 +29,6 @@ class Rpc {
   }
 
   call = (name: string, ...args: any[]): Promise<unknown> => {
-    if (__BROWSER_ONLY__ && !__MAC_NATIVE__) {
-      return Promise.resolve(undefined)
-    }
-
     const callNum = this.getNextId()
     const {resolver, promise} = createResolver<unknown>()
 
