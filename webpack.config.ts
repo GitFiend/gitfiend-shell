@@ -11,7 +11,6 @@ const packageJson = require('./package.json')
 
 interface WebpackArgv {
   mode: 'development' | 'production'
-  resources?: 'dev'
   env: WebpackEnv
 }
 
@@ -22,8 +21,8 @@ interface WebpackEnv {
 
 function configs(env: WebpackEnv, argv: WebpackArgv): Configuration {
   const devMode = argv.mode === 'development'
-  const testIntMode = !!(env && env.testInt === 'true')
-  const devResources = argv.env.devResources === 'true'
+  const testIntMode = env.testInt === 'true'
+  const devResources = env.devResources === 'true'
 
   const outputDir = join(__dirname, 'resources', 'dist')
   removePathSync(outputDir)
