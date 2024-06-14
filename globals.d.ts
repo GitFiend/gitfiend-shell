@@ -22,11 +22,3 @@ declare const __MAIN__: boolean
 
 declare const __PLATFORM__: string
 declare const __SEP__: string
-
-declare const TIME: (string) => void
-
-declare const TIME_END: (string) => void
-declare const LOG: (...args: any[]) => void
-
-declare const PERF: (string) => void
-declare const PERF_END: (string) => void
