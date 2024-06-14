@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 136 136" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:7;">
+    <g transform="matrix(1,0,0,1,-6145.57,-4375.99)">
+        <g transform="matrix(1.118,0,0,0.688412,-3116.01,2705.24)">
+            <g transform="matrix(0.1493,0,0,0.242468,7760.19,1799.66)">
+                <path d="M4186.86,2720.94C4114.68,2648.75 4016.78,2608.2 3914.7,2608.2C3702.12,2608.2 3529.79,2780.53 3529.79,2993.11L3626.02,2993.11C3626.02,2833.67 3755.26,2704.43 3914.7,2704.43C3991.26,2704.43 4064.68,2734.84 4118.82,2788.98L4186.86,2720.94Z" style="fill:white;stroke:white;stroke-width:5.95px;"/>
+            </g>
+        </g>
+        <g transform="matrix(1.118,0,0,0.688412,-3116.01,2705.24)">
+            <g transform="matrix(-0.1493,2.96938e-17,-1.8284e-17,-0.242468,8929.12,3251.12)">
+                <path d="M4186.86,2720.94C4114.68,2648.75 4016.78,2608.2 3914.7,2608.2C3702.12,2608.2 3529.79,2780.53 3529.79,2993.11L3626.02,2993.11C3626.02,2833.67 3755.26,2704.43 3914.7,2704.43C3991.26,2704.43 4064.68,2734.84 4118.82,2788.98L4186.86,2720.94Z" style="fill:white;stroke:white;stroke-width:5.95px;"/>
+            </g>
+        </g>
+        <g transform="matrix(1.118,0,0,0.688412,-3116.01,2705.24)">
+            <g transform="matrix(0.088209,-0.143254,0.088209,0.143254,7773.37,2635.07)">
+                <path d="M3219.2,2692.5L3392.25,2856.67L3046.16,2856.67L3219.2,2692.5Z" style="fill:white;stroke:white;stroke-width:7.12px;"/>
+            </g>
+        </g>
+        <g transform="matrix(1.118,0,0,0.688412,-3116.01,2705.24)">
+            <g transform="matrix(-0.088209,0.143254,-0.088209,-0.143254,8916.28,2415.43)">
+                <path d="M3219.2,2692.5L3392.25,2856.67L3046.16,2856.67L3219.2,2692.5Z" style="fill:white;stroke:white;stroke-width:7.12px;"/>
+            </g>
+        </g>
+    </g>
+</svg>
