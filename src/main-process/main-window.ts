@@ -2,6 +2,7 @@ import {app, BrowserWindow, nativeTheme} from 'electron'
 import {join} from 'path'
 import windowStateKeeper from 'electron-window-state'
 import {backgroundDark, backgroundLight} from '../constants'
+import {platform} from 'os'
 
 let mainWindow: BrowserWindow | null = null
 
@@ -60,7 +61,7 @@ async function createWindow(port: number) {
     darkTheme: dark,
   })
 
-  let htmlPath = join(__dirname, '..', 'index.html')
+  let htmlPath = join(__dirname, '..', __DEV_UI__ ? 'index-dev.html' : 'index.html')
   console.log(__dirname, htmlPath)
 
   if (__DEV__ && __INT_TEST__) {
@@ -71,11 +72,14 @@ async function createWindow(port: number) {
     mainWindow.webContents.openDevTools()
   }
 
-  mainWindow.loadFile(htmlPath, {query: {port: port.toString()}}).catch(console.log)
+  mainWindow
+    .loadFile(htmlPath, {query: {port: port.toString(), platform: platform()}})
+    .catch(console.log)
 
   mainWindow.on('closed', () => {
     mainWindow = null
   })
+  console.log('asdfasdfasdfasdf22')
 
   mainWindowState.manage(mainWindow)
 }

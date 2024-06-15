@@ -1,5 +1,5 @@
 import {arch, platform} from 'os'
-import {runAndPrint} from './run-and-print'
+import {runAndPrint} from './util'
 
 export async function buildRust(dir: string) {
   const args = ['build', '--release']

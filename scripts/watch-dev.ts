@@ -1,10 +1,10 @@
-import {join, resolve} from 'path'
 import {runAndPrint, watch} from './util'
+import {join, resolve} from 'path'
 
 function watchAll() {
   runAndPrint({
     command: 'npm',
-    args: ['run', 'watchShell'],
+    args: ['run', 'watchShellDev'],
     dir: resolve(),
   })
 
@@ -15,14 +15,6 @@ function watchAll() {
     watchDir: join(coreDir, 'src'),
     commandDir: coreDir,
   })
-
-  // watch({
-  //   command: 'npm',
-  //   args: ['run', 'start'],
-  //   watchDir: resolve('resources'),
-  //   commandDir: resolve(),
-  //   waitForChange: true,
-  // })
 }
 
 watchAll()

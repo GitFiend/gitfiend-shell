@@ -16,13 +16,13 @@ interface WebpackArgv {
 
 interface WebpackEnv {
   testInt?: 'true'
-  devResources?: 'true'
+  devUI?: 'true'
 }
 
 function configs(env: WebpackEnv, argv: WebpackArgv): Configuration {
   const devMode = argv.mode === 'development'
   const testIntMode = env.testInt === 'true'
-  const devResources = env.devResources === 'true'
+  const devUI = env.devUI === 'true'
 
   const outputDir = join(__dirname, 'resources', 'dist')
   removePathSync(outputDir)
@@ -35,7 +35,7 @@ function configs(env: WebpackEnv, argv: WebpackArgv): Configuration {
     },
     target: 'electron-main',
     output: {
-      path: devResources ? join(__dirname, 'resources-dev', 'dist') : outputDir,
+      path: outputDir,
       filename: '[name].js',
     },
     devtool: devMode ? 'eval-source-map' : undefined,
@@ -51,6 +51,7 @@ function configs(env: WebpackEnv, argv: WebpackArgv): Configuration {
         __TEST_TEMP_DIR__: JSON.stringify(join(__dirname, '.test-temp')),
         __APP_VERSION__: JSON.stringify(packageJson.version),
         __APP_NAME__: JSON.stringify(packageJson.name),
+        __DEV_UI__: devUI,
 
         __JEST__: false,
         __INT_TEST__: testIntMode,
