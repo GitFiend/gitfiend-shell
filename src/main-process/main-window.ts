@@ -1,6 +1,5 @@
-/// <reference path="../../globals.d.ts" />
 import {app, BrowserWindow, nativeTheme} from 'electron'
-import path from 'path'
+import {join} from 'path'
 import windowStateKeeper from 'electron-window-state'
 import {backgroundDark, backgroundLight} from '../constants'
 
@@ -9,7 +8,6 @@ let mainWindow: BrowserWindow | null = null
 export function runCreateWindow(port: number | null): void {
   if (!port) {
     console.error(`Couldn't create window as port was null. Exiting.`)
-
     app.quit()
     return
   }
@@ -37,7 +35,7 @@ async function createWindow(port: number) {
     defaultHeight: 800,
   })
 
-  const backgroundColor = getBackgroundColor()
+  const dark = nativeTheme.shouldUseDarkColors
 
   mainWindow = new BrowserWindow({
     x: mainWindowState.x,
@@ -46,7 +44,7 @@ async function createWindow(port: number) {
     height: mainWindowState.height,
     minWidth: 700,
     minHeight: 500,
-    backgroundColor,
+    backgroundColor: dark ? backgroundDark : backgroundLight,
     autoHideMenuBar: true,
     // titleBarStyle: __MAC__ ? 'hidden' : 'default',
     titleBarStyle: 'default',
@@ -58,16 +56,15 @@ async function createWindow(port: number) {
       contextIsolation: false,
       // preload: path.join(__dirname, '..', 'resources', 'preload.js'),
     },
-    icon: getIconPath(),
-    darkTheme: nativeTheme.shouldUseDarkColors,
+    icon: __DEV__ || __LIN__ ? join(__dirname, '..', 'build', 'icon.png') : undefined,
+    darkTheme: dark,
   })
 
-  // __dirname is resources/dist
-  let htmlPath = path.join(__dirname, '..', 'index.html')
+  let htmlPath = join(__dirname, '..', 'index.html')
   console.log(__dirname, htmlPath)
 
   if (__DEV__ && __INT_TEST__) {
-    htmlPath = path.join(__dirname, '..', 'test', 'test.html')
+    htmlPath = join(__dirname, '..', 'test', 'test.html')
   }
 
   if (__DEV__ && !__INT_TEST__) {
@@ -81,20 +78,6 @@ async function createWindow(port: number) {
   })
 
   mainWindowState.manage(mainWindow)
-}
-
-function getBackgroundColor(): string {
-  if (nativeTheme.shouldUseDarkColors) {
-    return backgroundDark
-  }
-  return backgroundLight
-}
-
-function getIconPath(): string | undefined {
-  if (__DEV__ || __LIN__) {
-    return path.join(__dirname, '..', 'build', 'icon.png')
-  }
-  return undefined
 }
 
 export function getMainWindow(): Electron.BrowserWindow | null {
