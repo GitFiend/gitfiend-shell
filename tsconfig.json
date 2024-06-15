@@ -4,15 +4,11 @@
     "target": "ES2022",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "jsx": "react",
-    "jsxFactory": "createElement",
-    "jsxFragmentFactory": "Fragment",
     "skipLibCheck": true,
     "sourceMap": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "strict": true,
-    "importHelpers": true
+    "strict": true
   },
   "include": [
     "globals.d.ts",
