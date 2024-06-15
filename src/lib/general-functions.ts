@@ -11,3 +11,18 @@ export function _mapO<K extends string, V, T>(
 
   return out
 }
+
+export function _debounce<T extends Function, A extends any[], R>(
+  func: (...a: A) => R,
+  wait: number,
+): (...a: A) => void {
+  let t: ReturnType<typeof setTimeout>
+
+  return (...a: A) => {
+    clearTimeout(t)
+
+    t = setTimeout(() => {
+      func(...a)
+    }, wait)
+  }
+}
