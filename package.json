@@ -20,7 +20,7 @@
     "dist": "npm run make && electron-builder --config builder/builder.config.js",
     "distDev": "npm run make && electron-builder --dir --config builder/builder.dev.config.js"
   },
-  "author": "Toby Suggate",
+  "author": "Toby Suggate <tjsuggate@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "@electron/notarize": "^2.3.2",

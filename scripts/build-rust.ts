@@ -1,7 +1,7 @@
 import {arch, platform} from 'os'
 import {runAndPrint} from './util'
 
-export async function buildRust(dir: string) {
+export function buildRust(dir: string): Promise<number | null> {
   const args = ['build', '--release']
 
   if (platform() === 'linux') {
@@ -12,9 +12,9 @@ export async function buildRust(dir: string) {
     }
   }
 
-  await runAndPrint({
+  return runAndPrint({
     command: 'cargo',
     dir,
     args,
-  })
+  }).promise
 }

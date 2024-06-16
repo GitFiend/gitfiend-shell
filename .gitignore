@@ -76,8 +76,6 @@ jspm_packages
 
 /dist/
 /.idea/
-/resources/dist/
-/resources/dist-ui/
 /.test-temp/
 
 /website/.idea/
@@ -142,4 +140,5 @@ firebase-debug.log*
 /test-home/
 
 /libraries/
+/resources/dist/
 /resources/dist-ui-dev/

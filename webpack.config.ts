@@ -122,6 +122,7 @@ const rustExclude = [
   'incremental',
   '.cargo-lock',
   'gitfiend-core.d',
+  'ask-pass.d',
 ]
 
 module.exports = configs

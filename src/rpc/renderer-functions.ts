@@ -26,8 +26,4 @@ export const rendererFunctions = {
   showMissingGitDialog: () => {},
 }
 
-function fetch() {}
-
-function pull() {}
-
 export type RendererFunctions = typeof rendererFunctions
