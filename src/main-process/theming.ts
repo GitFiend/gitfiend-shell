@@ -5,7 +5,7 @@ export function setupTheming() {
   nativeTheme.on('updated', sendThemeVarsToRenderer)
 }
 
-export function sendThemeVarsToRenderer() {
+export function sendThemeVarsToRenderer(): Promise<void> {
   if (__JEST__) {
     return callInRenderer('setThemeInRenderer', 'light', 'light', null)
   }
@@ -14,7 +14,7 @@ export function sendThemeVarsToRenderer() {
     'setThemeInRenderer',
     nativeTheme.shouldUseDarkColors ? 'dark' : 'light',
     nativeTheme.themeSource,
-    __LIN__ ? null : systemPreferences.getAccentColor()
+    __LIN__ ? null : systemPreferences.getAccentColor(),
   )
 }
 

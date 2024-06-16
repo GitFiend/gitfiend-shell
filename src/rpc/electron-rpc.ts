@@ -26,7 +26,9 @@ export const mainFunctions = {
   sendThemeVarsToRenderer,
   setTheme,
   sendMenuInfo,
-  restartServer() {},
+  restartServer() {
+    // TODO
+  },
   writeFile: writeFileSync,
 }
 
