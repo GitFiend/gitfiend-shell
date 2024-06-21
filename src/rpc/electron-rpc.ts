@@ -8,10 +8,6 @@ import {readAppArgs} from '../main-process/command-line-args/command-line-args'
 import {resolve} from 'path'
 import {writeFileSync} from 'fs'
 
-/*
-We put the Electron versions in here, but they are just used for the types
-when not using electron (E.g. native Mac app).
- */
 export const mainFunctions = {
   closeDevTools,
   getAppArgv,
@@ -25,15 +21,11 @@ export const mainFunctions = {
   showContextMenu: showElectronContextMenu,
   sendThemeVarsToRenderer,
   setTheme,
-  sendMenuInfo,
   restartServer() {
-    // TODO
+    app.relaunch()
+    app.exit(0)
   },
   writeFile: writeFileSync,
-}
-
-function sendMenuInfo(_recentRepos: string[], _currentRepo: string) {
-  // Implementation only in native mac shell.
 }
 
 export function closeDevTools(): void {
