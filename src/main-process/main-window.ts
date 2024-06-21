@@ -47,15 +47,12 @@ async function createWindow(port: number) {
     minHeight: 500,
     backgroundColor: dark ? backgroundDark : backgroundLight,
     autoHideMenuBar: true,
-    // titleBarStyle: __MAC__ ? 'hidden' : 'default',
     titleBarStyle: 'default',
-    // trafficLightPosition: {x: 20, y: 31},
     webPreferences: {
       nodeIntegration: true,
-      // nodeIntegrationInWorker: true,
       v8CacheOptions: 'bypassHeatCheck',
       contextIsolation: false,
-      // preload: path.join(__dirname, '..', 'resources', 'preload.js'),
+      zoomFactor: 1,
     },
     icon: __DEV__ || __LIN__ ? join(__dirname, '..', 'build', 'icon.png') : undefined,
     darkTheme: dark,
@@ -79,7 +76,6 @@ async function createWindow(port: number) {
   mainWindow.on('closed', () => {
     mainWindow = null
   })
-  console.log('asdfasdfasdfasdf22')
 
   mainWindowState.manage(mainWindow)
 }
