@@ -13,9 +13,7 @@
   "include": [
     "globals.d.ts",
     "src",
-    "src-ui",
-    "scripts",
-    "test"
+    "scripts"
   ],
   "exclude": [
     "node_modules",
@@ -23,8 +21,7 @@
     "target~~",
     "resources",
     ".test-temp",
-    "test-home",
-    "scripts/notarize.js"
+    "test-home"
   ],
   "compileOnSave": false
 }

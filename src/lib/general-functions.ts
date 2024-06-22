@@ -12,7 +12,7 @@ export function _mapO<K extends string, V, T>(
   return out
 }
 
-export function _debounce<T extends Function, A extends any[], R>(
+export function _debounce<A extends any[], R>(
   func: (...a: A) => R,
   wait: number,
 ): (...a: A) => void {

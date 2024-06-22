@@ -16,7 +16,8 @@
     "watchShellDev": "webpack --watch --progress --mode=development --env devUI=true",
     "makeAskPass": "tsx ./scripts/build-ask-pass.ts",
     "makeCore": "tsx ./scripts/build-all-rust.ts",
-    "appx": "npm run make && electron-builder --config builder/appx.js",
+    "appx": "npm run make && electron-builder --config ../config/appx.js",
+    "distMac": "npm run make && electron-builder --config ../config/mac.js",
     "dist": "npm run make && electron-builder --config builder/builder.config.js",
     "distDev": "npm run make && electron-builder --dir --config builder/builder.dev.config.js"
   },
@@ -25,6 +26,7 @@
   "devDependencies": {
     "@electron/notarize": "^2.3.2",
     "@types/jest": "^29.5.12",
+    "dotenv": "^16.4.5",
     "electron": "^29.4.2",
     "electron-builder": "^24.13.3",
     "electron-window-state": "^5.0.3",
