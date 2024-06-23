@@ -18,3 +18,5 @@ export function buildRust(dir: string): Promise<number | null> {
     args,
   }).promise
 }
+
+export function copyToDist() {}

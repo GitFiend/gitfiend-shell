@@ -19,6 +19,7 @@
     "appx": "npm run make && electron-builder --config ../config/appx.js",
     "distMac": "npm run make && electron-builder --config ../config/mac.js",
     "dist": "npm run make && electron-builder --config builder/builder.config.js",
+    "dist2": "tsx scripts/dist.ts",
     "distDev": "npm run make && electron-builder --dir --config builder/builder.dev.config.js"
   },
   "author": "Toby Suggate <tjsuggate@gmail.com>",
