@@ -1,12 +1,9 @@
 /// <reference path="globals.d.ts" />
-import {CopyFolderPlugin} from './scripts/copy-folder-plugin'
-
-import {arch, platform} from 'os'
+import {platform} from 'os'
 import {Configuration, DefinePlugin} from 'webpack'
-import {join, resolve, sep} from 'path'
+import {join, sep} from 'path'
 import ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
-import {removePathSync} from './src/main-process/util'
-import {ensureDirSync} from './src/lib/node-util'
+
 const packageJson = require('./package.json')
 
 interface WebpackArgv {
@@ -25,9 +22,9 @@ function configs(env: WebpackEnv, argv: WebpackArgv): Configuration {
   const devUI = env.devUI === 'true'
 
   const outputDir = join(__dirname, 'resources', 'dist')
-  removePathSync(outputDir)
-  ensureDirSync(outputDir)
-  console.log(`Cleared ${outputDir}.`)
+  // removePathSync(outputDir)
+  // ensureDirSync(outputDir)
+  // console.log(`Cleared ${outputDir}.`)
 
   return {
     entry: {
@@ -62,38 +59,38 @@ function configs(env: WebpackEnv, argv: WebpackArgv): Configuration {
         __SEP__: JSON.stringify(sep),
       }),
       new ForkTsCheckerWebpackPlugin(),
-      new CopyFolderPlugin({
-        from:
-          platform() === 'linux'
-            ? resolve(
-                '..',
-                'gitfiend-core',
-                'target',
-                arch() === 'arm64'
-                  ? 'aarch64-unknown-linux-musl'
-                  : 'x86_64-unknown-linux-musl',
-                'release',
-              )
-            : resolve('..', 'gitfiend-core', 'target', 'release'),
-        to: resolve('resources', 'dist', 'core'),
-        exclude: rustExclude,
-      }),
-      new CopyFolderPlugin({
-        from:
-          platform() === 'linux'
-            ? resolve(
-                'src',
-                'ask-pass',
-                'target',
-                arch() === 'arm64'
-                  ? 'aarch64-unknown-linux-musl'
-                  : 'x86_64-unknown-linux-musl',
-                'release',
-              )
-            : resolve('src', 'ask-pass', 'target', 'release'),
-        to: resolve('resources', 'dist', 'ask-pass'),
-        exclude: rustExclude,
-      }),
+      // new CopyFolderPlugin({
+      //   from:
+      //     platform() === 'linux'
+      //       ? resolve(
+      //           '..',
+      //           'gitfiend-core',
+      //           'target',
+      //           arch() === 'arm64'
+      //             ? 'aarch64-unknown-linux-musl'
+      //             : 'x86_64-unknown-linux-musl',
+      //           'release',
+      //         )
+      //       : resolve('..', 'gitfiend-core', 'target', 'release'),
+      //   to: resolve('resources', 'dist', 'core'),
+      //   exclude: rustExclude,
+      // }),
+      // new CopyFolderPlugin({
+      //   from:
+      //     platform() === 'linux'
+      //       ? resolve(
+      //           'src',
+      //           'ask-pass',
+      //           'target',
+      //           arch() === 'arm64'
+      //             ? 'aarch64-unknown-linux-musl'
+      //             : 'x86_64-unknown-linux-musl',
+      //           'release',
+      //         )
+      //       : resolve('src', 'ask-pass', 'target', 'release'),
+      //   to: resolve('resources', 'dist', 'ask-pass'),
+      //   exclude: rustExclude,
+      // }),
     ],
     module: {
       rules: [
@@ -114,15 +111,15 @@ function configs(env: WebpackEnv, argv: WebpackArgv): Configuration {
   }
 }
 
-const rustExclude = [
-  '.fingerprint',
-  'build',
-  'deps',
-  'examples',
-  'incremental',
-  '.cargo-lock',
-  'gitfiend-core.d',
-  'ask-pass.d',
-]
+// const rustExclude = [
+//   '.fingerprint',
+//   'build',
+//   'deps',
+//   'examples',
+//   'incremental',
+//   '.cargo-lock',
+//   'gitfiend-core.d',
+//   'ask-pass.d',
+// ]
 
 module.exports = configs
