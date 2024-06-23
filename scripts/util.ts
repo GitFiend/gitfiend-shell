@@ -17,7 +17,7 @@ export function runAndPrint({command, dir, args}: Options): {
   const p = new Promise<number | null>(resolve => {
     console.log(`${command} ${args.join(' ')}`)
 
-    const proc = spawn(command, args, {cwd: dir, stdio: 'inherit'})
+    const proc = spawn(command, args, {cwd: dir, stdio: 'inherit', shell: true})
 
     kill = () => {
       proc.kill(1)
