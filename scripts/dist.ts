@@ -53,7 +53,7 @@ async function run() {
     args: [
       '--config',
       pickBuilderConfig(config),
-      config[1] === 'x86' ? '--x86' : '--arm64',
+      config[1] === 'x86' ? '--x64' : '--arm64',
     ],
   }).promise
 }
