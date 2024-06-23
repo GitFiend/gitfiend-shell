@@ -32,4 +32,4 @@ Examples:
 - `npm run dist -- linux arm deb`
 
 ## Trouble
-Use `git submodule update --init --recursive` to clone the missing repos if you didn't clone with `--recursive`
+Use `git submodule update --init --recursive` from the top level repo to clone the missing repos if you didn't clone with `--recursive`
