@@ -17,6 +17,7 @@ type RustTarget =
   | 'x86_64-unknown-linux-musl'
   | 'aarch64-unknown-linux-musl'
   | 'x86_64-pc-windows-msvc'
+  | 'aarch64-pc-windows-msvc'
 
 async function run() {
   const config = readArgs(process.argv.slice(2))
@@ -59,7 +60,7 @@ async function run() {
 }
 
 type Config =
-  | ['win', 'x86', 'appx' | 'nsis']
+  | ['win', 'x86' | 'arm', 'appx' | 'nsis']
   | ['mac', 'x86' | 'arm']
   | ['linux', 'x86' | 'arm', 'deb' | 'rpm' | 'appImage']
 
@@ -104,7 +105,8 @@ function pickTarget(config: Config): RustTarget {
 
   switch (platorm) {
     case 'win':
-      return 'x86_64-pc-windows-msvc'
+      if (arch === 'x86') return 'x86_64-pc-windows-msvc'
+      return 'aarch64-pc-windows-msvc'
     case 'mac':
       if (arch === 'x86') return 'x86_64-apple-darwin'
       return 'aarch64-apple-darwin'
