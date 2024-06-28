@@ -4,14 +4,11 @@
  */
 module.exports = {
   appId: 'com.tobysuggate.gitfiend',
-  win: {
-    target: ['nsis'],
-  },
+  win: {},
   nsis: {
     perMachine: true,
   },
   linux: {
-    target: ['appImage', 'deb', 'rpm'],
     category: 'Development',
     icon: 'build/iconset',
   },
