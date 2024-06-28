@@ -72,20 +72,16 @@ function readArgs(args: string[]): Config {
     fatal(`Missing platform. One of `, option.platform, 'is required')
   }
 
-  if (platform === 'win') {
-    if (arch === 'arm') {
-      fatal(`Arm architecture on Windows hasn't been implement yet`)
-    }
+  if (!arch) {
+    fatal(`Missing architecture. One of `, option.arch, 'is required')
+  }
 
+  if (platform === 'win') {
     const bundle = findOption(args, option.winBundle)
     if (!bundle) {
       fatal('Missing bundle type. One of ', option.winBundle, 'is required')
     }
-    return [platform, 'x86', bundle]
-  }
-
-  if (!arch) {
-    fatal(`Missing architecture. One of `, option.arch, 'is required')
+    return [platform, arch, bundle]
   }
 
   if (platform === 'mac') {
