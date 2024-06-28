@@ -48,14 +48,20 @@ async function run() {
   await runAndPrint({command: 'webpack', dir: process.cwd(), args: ['--mode=production']})
     .promise
 
+  const args = [
+    '--config',
+    pickBuilderConfig(config),
+    config[1] === 'x86' ? '--x64' : '--arm64',
+  ]
+  const t = calcElectronTarget(config)
+  if (t) {
+    args.push(...t)
+  }
+
   await runAndPrint({
     command: 'electron-builder',
     dir: process.cwd(),
-    args: [
-      '--config',
-      pickBuilderConfig(config),
-      config[1] === 'x86' ? '--x64' : '--arm64',
-    ],
+    args,
   }).promise
 }
 
@@ -110,6 +116,13 @@ function pickTarget(config: Config): RustTarget {
       if (arch === 'x86') return 'x86_64-unknown-linux-musl'
       return 'aarch64-unknown-linux-musl'
   }
+}
+
+function calcElectronTarget(config: Config): string[] | null {
+  const [platform, _, target] = config
+  if (platform === 'mac') return null
+
+  return [`--${platform}`, target]
 }
 
 function pickBuilderConfig([platform, _, bundle]: Config) {
