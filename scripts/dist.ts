@@ -3,6 +3,7 @@ import {join, resolve} from 'path'
 import fs, {existsSync} from 'fs'
 import {removePathSync} from '../src/main-process/util'
 import {ensureDirSync} from '../src/lib/node-util'
+import {platform} from 'os'
 
 const option = {
   platform: ['win', 'mac', 'linux'],
@@ -21,6 +22,12 @@ type RustTarget =
 
 async function run() {
   const config = readArgs(process.argv.slice(2))
+
+  let useCross = false
+  if (detectPlatform() !== config[0]) {
+    useCross = true
+  }
+
   const target = pickTarget(config)
 
   removePathSync(resolve('resources', 'dist-ui-dev'))
@@ -30,7 +37,7 @@ async function run() {
 
   const exe = config[0] === 'win' ? '.exe' : ''
   const askPassDir = resolve(__dirname, '..', 'src', 'ask-pass')
-  await cargoBuild(askPassDir, target)
+  await cargoBuild(askPassDir, target, useCross)
   copyFile(
     join(askPassDir, 'target', target, 'release'),
     join(distDir, 'ask-pass'),
@@ -38,7 +45,7 @@ async function run() {
   )
 
   const coreDir = resolve(__dirname, '..', '..', 'gitfiend-core')
-  await cargoBuild(coreDir, target)
+  await cargoBuild(coreDir, target, useCross)
   copyFile(
     join(coreDir, 'target', target, 'release'),
     resolve('resources', 'dist', 'core'),
@@ -147,14 +154,39 @@ function pickBuilderConfig([platform, _, bundle]: Config) {
   }
 }
 
-function cargoBuild(dir: string, target: RustTarget): Promise<number | null> {
+async function cargoBuild(
+  dir: string,
+  target: RustTarget,
+  useCross: boolean,
+): Promise<number | null> {
   const args = ['build', '--release', '--target', target]
 
-  return runAndPrint({
-    command: 'cargo',
+  const res = await runAndPrint({
+    command: useCross ? 'cross' : 'cargo',
     dir,
     args,
   }).promise
+
+  if (res) {
+    process.exit(res)
+  }
+
+  return res
+}
+
+function detectPlatform(): 'win' | 'mac' | 'linux' {
+  const p = platform()
+  switch (p) {
+    case 'darwin':
+      return 'mac'
+    case 'win32':
+      return 'win'
+    case 'linux':
+      return 'linux'
+    default:
+      console.log(`Platform ${p} doesn't have any implementations yet.`)
+      process.exit(1)
+  }
 }
 
 function findOption<T>(args: string[], options: readonly T[]): T | null {
