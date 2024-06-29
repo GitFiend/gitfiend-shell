@@ -10,11 +10,17 @@ export function sendThemeVarsToRenderer(): Promise<void> {
     return callInRenderer('setThemeInRenderer', 'light', 'light', null)
   }
 
+  let colour: string | null = null
+
+  if ('getAccentColor' in systemPreferences) {
+    colour = systemPreferences.getAccentColor()
+  }
+
   return callInRenderer(
     'setThemeInRenderer',
     nativeTheme.shouldUseDarkColors ? 'dark' : 'light',
     nativeTheme.themeSource,
-    __LIN__ ? null : systemPreferences.getAccentColor(),
+    colour,
   )
 }
 
