@@ -52,9 +52,6 @@ function configs(
         __INT_TEST__: testIntMode,
 
         __MAIN__: true,
-
-        __PLATFORM__: JSON.stringify(platform()),
-        __SEP__: JSON.stringify(sep),
       }),
       new ForkTsCheckerWebpackPlugin(),
     ],

@@ -21,6 +21,3 @@ declare const __APP_VERSION__: string
 declare const __APP_NAME__: string
 
 declare const __MAIN__: boolean
-
-declare const __PLATFORM__: string
-declare const __SEP__: string

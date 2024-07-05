@@ -14,7 +14,6 @@ module.exports = {
     __APP_VERSION__: JSON.stringify(packageJson.version),
     __APP_NAME__: JSON.stringify(packageJson.name),
     __MENU2__: true,
-    __SEP__: JSON.stringify(path.sep),
   },
   roots: ['<rootDir>/src/'],
   transform: {
