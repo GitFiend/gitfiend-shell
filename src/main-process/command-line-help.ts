@@ -1,8 +1,9 @@
 import {getCwd} from './util'
+import {platform} from 'os'
 
 export function handleCommandLineHelp() {
   if (process.argv.some(arg => arg === '-h' || arg === '--help')) {
-    if (__MAC__) {
+    if (platform() === 'darwin') {
       printHelpMac()
     } else {
       printHelp()

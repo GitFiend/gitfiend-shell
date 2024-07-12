@@ -1,8 +1,9 @@
 import path from 'path'
 import fs from 'fs'
+import {platform} from 'os'
 
 export function getCwd(): string {
-  if (__MAC__) {
+  if (platform() === 'darwin') {
     const pwd = process.env.PWD
     if (pwd !== undefined) return pwd
   }

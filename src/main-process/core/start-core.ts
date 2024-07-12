@@ -4,6 +4,7 @@ import {spawn} from 'child_process'
 import {existsSync} from 'fs'
 import {app} from 'electron'
 import {parsePort} from './parse-port'
+import {platform} from 'os'
 
 export function startCore(): Promise<number | null> {
   return new Promise<number | null>(resolve => {
@@ -47,7 +48,8 @@ export function startCore(): Promise<number | null> {
 }
 
 function getCorePath(): string {
-  const fileName = `gitfiend-core${__WIN__ ? '.exe' : ''}`
+  const isWin = platform() === 'win32'
+  const fileName = `gitfiend-core${isWin ? '.exe' : ''}`
 
   const corePath = __DEV__
     ? path.resolve('..', 'gitfiend-core', 'target', 'release', fileName)

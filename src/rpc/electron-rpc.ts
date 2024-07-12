@@ -7,6 +7,7 @@ import {sendThemeVarsToRenderer, setTheme} from '../main-process/theming'
 import {readAppArgs} from '../main-process/command-line-args/command-line-args'
 import {resolve} from 'path'
 import {writeFileSync} from 'fs'
+import {platform} from 'os'
 
 export const mainFunctions = {
   closeDevTools,
@@ -41,7 +42,7 @@ export function getAppArgv(): {repoPath: string | null} {
 }
 
 export function showAboutDialog() {
-  if (__LIN__) {
+  if (platform() === 'linux') {
     const win = getMainWindow()
     if (win === null) return
 

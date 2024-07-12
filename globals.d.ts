@@ -1,12 +1,6 @@
 //
 declare const __DEV__: boolean
 
-declare const __MAC__: boolean
-
-declare const __WIN__: boolean
-
-declare const __LIN__: boolean
-
 declare const __JEST__: boolean
 declare const __TEST_TEMP_DIR__: string
 

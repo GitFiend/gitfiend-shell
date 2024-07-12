@@ -2,12 +2,13 @@ import {RenderMenuItem} from './menu-types'
 import {Menu, MenuItem} from 'electron'
 import {convertRendererMenu} from '../electron-rpc'
 import {getMainWindow} from '../../main-process/main-window'
+import {platform} from 'os'
 
 // Note: This gets called in Main process, not renderer.
 export function showElectronContextMenu(
   items: RenderMenuItem[],
   x: number,
-  y: number
+  y: number,
 ): Promise<void> {
   return new Promise(resolve => {
     const zoom = getMainWindow()?.webContents.getZoomFactor() ?? 1
@@ -15,7 +16,7 @@ export function showElectronContextMenu(
     x *= zoom
     y *= zoom
 
-    if (__MAC__) {
+    if (platform() === 'darwin') {
       y += 5
     }
 

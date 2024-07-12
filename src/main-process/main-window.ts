@@ -54,7 +54,10 @@ async function createWindow(port: number) {
       contextIsolation: false,
       zoomFactor: 1,
     },
-    icon: __DEV__ || __LIN__ ? join(__dirname, '..', 'build', 'icon.png') : undefined,
+    icon:
+      __DEV__ || platform() === 'linux'
+        ? join(__dirname, '..', 'build', 'icon.png')
+        : undefined,
     darkTheme: dark,
   })
 

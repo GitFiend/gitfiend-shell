@@ -1,7 +1,6 @@
 /// <reference path="globals.d.ts" />
-import {platform} from 'os'
 import {Configuration, DefinePlugin} from 'webpack'
-import {join, sep} from 'path'
+import {join} from 'path'
 import ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 
 const packageJson = require('./package.json')
@@ -40,9 +39,6 @@ function configs(
     plugins: [
       new DefinePlugin({
         __DEV__: devMode,
-        __MAC__: platform() === 'darwin',
-        __WIN__: platform() === 'win32',
-        __LIN__: platform() === 'linux',
         __TEST_TEMP_DIR__: JSON.stringify(join(__dirname, '.test-temp')),
         __APP_VERSION__: JSON.stringify(packageJson.version),
         __APP_NAME__: JSON.stringify(packageJson.name),
