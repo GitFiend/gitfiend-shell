@@ -1,8 +1,8 @@
 import {app, BrowserWindow, nativeTheme} from 'electron'
 import {join} from 'path'
-import windowStateKeeper from 'electron-window-state'
 import {backgroundDark, backgroundLight} from '../constants'
 import {platform} from 'os'
+import windowStateKeeper from './window-state'
 
 let mainWindow: BrowserWindow | null = null
 
