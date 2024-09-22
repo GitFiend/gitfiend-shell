@@ -18,20 +18,20 @@
   "author": "Toby Suggate <tjsuggate@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@electron/notarize": "^2.3.2",
-    "@types/jest": "^29.5.12",
+    "@electron/notarize": "^2.5.0",
+    "@types/jest": "^29.5.13",
     "dotenv": "^16.4.5",
-    "electron": "^31.3.0",
-    "electron-builder": "^24.13.3",
+    "electron": "^31.6.0",
+    "electron-builder": "^25.0.5",
     "electron-window-state": "^5.0.3",
     "esbuild-loader": "^4.2.2",
     "fork-ts-checker-webpack-plugin": "^9.0.2",
     "jest": "^29.7.0",
     "prettier": "^3.3.3",
-    "ts-jest": "^29.2.3",
-    "tsx": "^4.16.2",
-    "typescript": "^5.5.4",
-    "webpack": "^5.93.0",
+    "ts-jest": "^29.2.5",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2",
+    "webpack": "^5.94.0",
     "webpack-cli": "^5.1.4"
   }
 }
