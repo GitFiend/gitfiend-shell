@@ -19,10 +19,10 @@
   "license": "MIT",
   "devDependencies": {
     "@electron/notarize": "^2.5.0",
-    "@types/jest": "^29.5.13",
+    "@types/jest": "^29.5.14",
     "dotenv": "^16.4.5",
     "electron": "^31.7.0",
-    "electron-builder": "^25.1.7",
+    "electron-builder": "^25.1.8",
     "electron-window-state": "^5.0.3",
     "esbuild-loader": "^4.2.2",
     "fork-ts-checker-webpack-plugin": "^9.0.2",
@@ -30,8 +30,8 @@
     "prettier": "^3.3.3",
     "ts-jest": "^29.2.5",
     "tsx": "^4.19.1",
-    "typescript": "^5.6.2",
-    "webpack": "^5.94.0",
+    "typescript": "^5.6.3",
+    "webpack": "^5.95.0",
     "webpack-cli": "^5.1.4"
   }
 }
