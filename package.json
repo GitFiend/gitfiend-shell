@@ -1,6 +1,6 @@
 {
   "name": "GitFiend",
-  "version": "0.46.0",
+  "version": "0.46.1",
   "description": "A Git client designed for humans",
   "homepage": "https://gitfiend.com",
   "main": "./resources/dist/main.js",
