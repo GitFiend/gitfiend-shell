@@ -1,6 +1,6 @@
 {
   "name": "GitFiend",
-  "version": "0.45.3",
+  "version": "0.46.1",
   "description": "A Git client designed for humans",
   "homepage": "https://gitfiend.com",
   "main": "./resources/dist/main.js",
@@ -18,8 +18,8 @@
   "author": "Toby Suggate <tjsuggate@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@electron/notarize": "^2.3.2",
-    "@types/jest": "^29.5.12",
+    "@electron/notarize": "^2.5.0",
+    "@types/jest": "^29.5.14",
     "dotenv": "^16.4.5",
     "electron": "^31.3.0",
     "electron-builder": "^24.13.3",
