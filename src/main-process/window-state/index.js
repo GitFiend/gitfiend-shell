@@ -104,6 +104,7 @@ module.exports = function (options) {
       state.isMaximized = win.isMaximized()
       state.isFullScreen = win.isFullScreen()
       state.displayBounds = screen.getDisplayMatching(winBounds).bounds
+      state.zoomFactor = win.webContents.getZoomFactor()
     } catch (err) {}
   }
 
@@ -204,6 +205,9 @@ module.exports = function (options) {
     },
     get isFullScreen() {
       return state.isFullScreen
+    },
+    get zoomFactor() {
+      return state.zoomFactor ?? 1
     },
     saveState,
     unmanage,

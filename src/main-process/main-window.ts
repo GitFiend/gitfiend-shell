@@ -52,7 +52,7 @@ async function createWindow(port: number) {
       nodeIntegration: true,
       v8CacheOptions: 'bypassHeatCheck',
       contextIsolation: false,
-      zoomFactor: 1,
+      zoomFactor: mainWindowState.zoomFactor,
     },
     icon:
       __DEV__ || platform() === 'linux'
