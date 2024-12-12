@@ -22,7 +22,7 @@
     "@types/jest": "^29.5.14",
     "dotenv": "^16.4.5",
     "electron": "^32.2.7",
-    "electron-builder": "^25.1.8",
+    "electron-builder": "^26.0.0-alpha.7",
     "esbuild-loader": "^4.2.2",
     "esbuild-register": "^3.6.0",
     "fork-ts-checker-webpack-plugin": "^9.0.2",
